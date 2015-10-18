@@ -1,0 +1,24 @@
+{
+  "name": "projectzero.1",
+  "version": "1.0.0",
+  "description": "projectzero",
+  "main": "server.js",
+  "scripts": {
+    "test": "blah",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpcowles726/projectzero.1.git"
+  },
+  "author": "Matt Cowles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpcowles726/projectzero.1/issues"
+  },
+  "homepage": "https://github.com/mpcowles726/projectzero.1#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {}
+}
