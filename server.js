@@ -2,9 +2,13 @@
 var express = require('express');
 var app = express();
 
+//CONFIGURATIONS
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
+
 //ROUTES
 app.get('/', function (req, res) {
-	res.send ("WORK");
+	res.render ('index.ejs');
 });
 
 
