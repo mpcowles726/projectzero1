@@ -10,25 +10,34 @@ app.use(express.static('public'));
 
 
 //ROUTES
+//ROUTE TO RENDER INDEX.EJS
 app.get('/', function (req, res) {
 	res.render ('index.ejs');
 });
 
 //ROUTE TO GET ALL POSTS
-api.get("/API/POSTS", function (req, res) {
-	res.send(POSTS);
+app.get("/API/POSTS", function (req, res) {
+	
+});
+
+//ROUTE TO GET SINGLE BLOG POST
+app.get("/API/POSTS/:id", function (req, res) { 
+      
 });
 
 //ROUTE TO CREATE NEW POSTS
 app.post("/API/POSTS", function (req, res) {
-	var newPost = req.body;
-	console.log(newPost);
+	
+});
+
+//ROUTE TO UPDATE SINGLE BLOG POST
+app.put("/API/POSTS/:id", function (req, res) {
+
 });
 
 //ROUTE TO DELETE A POST
 app.delete("API/POSTS/:id", function (req, res) {
-	//set the value of hte id
-	var targetId = req.params.id;
+
 });
 
 
