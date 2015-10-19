@@ -1,10 +1,3 @@
-$(document).ready(function(){
-  BlogPost();
-});
-
-
-
-
 var BlogPost = function(){
   console.log("Initialized!");
   this.$formField = $("#blogPost");
@@ -19,11 +12,11 @@ BlogPost.prototype.addEventListeners = function(){
   
 //EVENT HANDLER FOR ADDING A POST
   this.$submitBtn.click(function(e){
-	e.preventDefault();
+  e.preventDefault();
   alert("form submitted");
   
-	that.addToList(that.$formField.val());
-	that.$formField.val('');
+  that.addToList(that.$formField.val());
+  that.$formField.val('');
   
   // EVENT HANDLER FOR DELETING A POST
   this.$container.click('.glyphicon', function(event){
@@ -44,7 +37,7 @@ BlogPost.prototype.deleteFromList = function(elem){
 };
 
 function Post(content){
-	return $("<li>" + content + "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></li>");
+  return $("<li>" + content + "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></li>");
 }
 $(document).ready(function(){
   var blog = new BlogPost();
