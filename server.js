@@ -4,6 +4,7 @@ var app = express();
 var db = require('./models');
 var mongoose = require('mongoose');
 
+
 //CONFIGURATIONS
 //set view engine to ejs
 app.set('view engine', 'ejs');
@@ -18,10 +19,10 @@ app.get('/', function (req, res) {
 });
 
 //ROUTE TO GET ALL POSTS
-app.get("/API/POSTS", function (req, res) {
+app.get("/api/posts", function (req, res) {
 	db.Post.find().exec(function(err, posts) {
 		if (err) { return console.log("find error: " + err); }
-		res.render('index.ejs', {posts: posts});
+		res.render('index', {posts: posts});
 	});
 });
 
@@ -32,7 +33,12 @@ app.get("/API/POSTS/:id", function (req, res) {
 
 //ROUTE TO CREATE NEW POSTS
 app.post("/API/POSTS", function (req, res) {
-	
+	var newPost = req.body;
+	console.log(newPost);
+
+	db.Food.create(newFood, function(err, food) {
+		if (err) { return console.log("create error: " + err); }
+	});
 });
 
 //ROUTE TO UPDATE SINGLE BLOG POST
@@ -48,46 +54,7 @@ app.delete("API/POSTS/:id", function (req, res) {
 
 
 
-var posts = [ {
-	title: "matt",
-	content: "cowles",
-},
-	{
-		title: "BILLY MAYS",
-		content: "HERE FOR PROJECTZERO1"
-	}];
 
-/*DATA
-var footballData = [{
-	team: "49ers",
-	city: "San Francisco",
-	stadium: "Levi's",
-},
-{
-	team: "Packers",
-	city: "Green Bay",
-	stadium: "Lambeau Field"
-},
-{
-	team: "Raiders",
-	city: "Oakland",
-	stadium: "O.co Coloseum"
-},
-{
-	team: "Colts",
-	city: "Indianappolis",
-	stadium: "Lucas Oil Field"
-},
-{
-	team: "Browns",
-	city: "Cleveland",
-	stadium: "FirstEnergy Stadium"
-},
-{
-	team: "Steelers",
-	city: "Pittsburg",
-	stadium: "Heinz Field"
-} ];*/
 
 
 

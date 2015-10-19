@@ -1,3 +1,10 @@
+$(document).ready(function(){
+  BlogPost();
+});
+
+
+
+
 var BlogPost = function(){
   console.log("Initialized!");
   this.$formField = $("#blogPost");
