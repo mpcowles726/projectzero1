@@ -7,4 +7,4 @@ db.once('open', function (callback) {
 	// yay!
 });
 
-model.exports.Post = require('./post.js')
+model.exports.Post = require('./post.js');
