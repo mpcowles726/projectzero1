@@ -20,8 +20,37 @@ app.get('/', function (req, res) {
 
 
 
-
-
+//DATA
+var footballData = [{
+	team: "49ers",
+	city: "San Francisco",
+	stadium: "Levi's",
+},
+{
+	team: "Packers",
+	city: "Green Bay",
+	stadium: "Lambeau Field"
+},
+{
+	team: "Raiders",
+	city: "Oakland",
+	stadium: "O.co Coloseum"
+},
+{
+	team: "Colts",
+	city: "Indianappolis",
+	stadium: "Lucas Oil Field"
+},
+{
+	team: "Browns",
+	city: "Cleveland",
+	stadium: "FirstEnergy Stadium"
+},
+{
+	team: "Steelers",
+	city: "Pittsburg",
+	stadium: "Heinz Field"
+} ];
 
 
 

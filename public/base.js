@@ -5,12 +5,13 @@ var BlogPost = function(){
   this.$submitBtn = $("#submitBtn");
 };
 
-// 
+// Added eventlisteners
 BlogPost.prototype.addEventListeners = function(){
   var that = this;
   console.log("Event listeners added!");
   this.$submitBtn.click(function(e){
 	e.preventDefault();
+  alert("form submitted!");
 	that.addToList(that.$formField.val());
 	that.$formField.val('');
   });
@@ -26,6 +27,7 @@ BlogPost.prototype.addToList = function(elem){
 
 // Removing posts using prototype function
 BlogPost.prototype.deleteFromList = function(elem){
+  alert("post deleted!");
   elem.remove();
 };
 
