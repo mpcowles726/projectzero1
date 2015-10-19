@@ -14,16 +14,11 @@ BlogPost.prototype.addEventListeners = function(){
 //EVENT HANDLER FOR ADDING A POST
   this.$submitBtn.click(function(e){
 	e.preventDefault();
-  alert("form submitted!");
-  $.ajax ({
-    method: "POST",
-    url: "/API/POSTS",
-    footballData: {
-    }
-  })
-    .done(function () {
-      console.log()
-    });
+  alert("form submitted");
+  $.post('/API/POSTS', $.this.serialize, function (response){
+    console.log(response);
+  });
+
   });
 	that.addToList(that.$formField.val());
 	that.$formField.val('');
@@ -33,18 +28,15 @@ BlogPost.prototype.addEventListeners = function(){
 // EVENT HANDLER FOR DELETING A POST
   this.$container.click('.glyphicon', function(event){
     that.deleteFromList(event.target.closest('li'));
-    $ajax ({
-      method: "DELETE",
-    }); 
-
-});
- // Adding new posts using prototype function
+  });
+ 
+ // APPENDING THE NEW POST
 BlogPost.prototype.addToList = function(elem){
   var post = new Post(elem);
   this.$container.append(post);
 };
 
-// Removing posts using prototype function
+// REMOVING THE POST
 BlogPost.prototype.deleteFromList = function(elem){
   alert("post deleted!");
   elem.remove();
