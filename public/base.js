@@ -10,26 +10,20 @@ BlogPost.prototype.addEventListeners = function(){
   var that = this;
   console.log("Event listeners added!");
   
-
 //EVENT HANDLER FOR ADDING A POST
   this.$submitBtn.click(function(e){
 	e.preventDefault();
   alert("form submitted");
-  $.post('/API/POSTS', $.this.serialize, function (response){
-    console.log(response);
-  });
-
-  });
+  
 	that.addToList(that.$formField.val());
 	that.$formField.val('');
-  };
   
-
-// EVENT HANDLER FOR DELETING A POST
+  // EVENT HANDLER FOR DELETING A POST
   this.$container.click('.glyphicon', function(event){
     that.deleteFromList(event.target.closest('li'));
   });
- 
+});
+ };
  // APPENDING THE NEW POST
 BlogPost.prototype.addToList = function(elem){
   var post = new Post(elem);
