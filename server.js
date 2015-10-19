@@ -1,6 +1,8 @@
 //REQUIREMENTS
 var express = require('express');
 var app = express();
+var db = require('./models');
+var mongoose = require('mongoose');
 
 //CONFIGURATIONS
 //set view engine to ejs
@@ -17,7 +19,10 @@ app.get('/', function (req, res) {
 
 //ROUTE TO GET ALL POSTS
 app.get("/API/POSTS", function (req, res) {
-	
+	db.Post.find().exec(function(err, posts) {
+		if (err) { return console.log("find error: " + err); }
+		res.render('index.ejs', {posts: posts});
+	});
 });
 
 //ROUTE TO GET SINGLE BLOG POST
@@ -43,7 +48,14 @@ app.delete("API/POSTS/:id", function (req, res) {
 
 
 
-
+var posts = [ {
+	title: "matt",
+	content: "cowles",
+},
+	{
+		title: "BILLY MAYS",
+		content: "HERE FOR PROJECTZERO1"
+	}];
 
 /*DATA
 var footballData = [{
