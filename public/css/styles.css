@@ -29,4 +29,7 @@ li {
 li:last-child {
   border: none;
 }
+.white {
+  background-color: white;
+}
 

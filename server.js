@@ -1,8 +1,9 @@
 //REQUIREMENTS
 var express = require('express');
 var app = express();
-var db = require('./models');
+var db = require('./models/index.js');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 
 //CONFIGURATIONS
@@ -10,12 +11,17 @@ var mongoose = require('mongoose');
 app.set('view engine', 'ejs');
 //set path to serve js and css files
 app.use(express.static('public'));
+// config body parser
+app.use(bodyParser.urlencoded( { extended: true }));
 
 
 //ROUTES
 //ROUTE TO RENDER INDEX.EJS
 app.get('/', function (req, res) {
-	res.render ('index.ejs');
+	db.Post.find({}).exec(function (err, posts) {
+		if (err) { return console.log('find error: ' + err); }
+	res.render ('index.ejs', {posts: posts});
+	});
 });
 
 //ROUTE TO GET ALL POSTS
@@ -27,28 +33,36 @@ app.get("/api/posts", function (req, res) {
 });
 
 //ROUTE TO GET SINGLE BLOG POST
-app.get("/API/POSTS/:id", function (req, res) { 
+app.get("/api/posts/:id", function (req, res) { 
       
 });
 
 //ROUTE TO CREATE NEW POSTS
-app.post("/API/POSTS", function (req, res) {
+app.post("/api/posts", function (req, res) {
 	var newPost = req.body;
 	console.log(newPost);
 
-	db.Food.create(newFood, function(err, food) {
+
+
+	db.Post.create(newPost, function(err, post) {
 		if (err) { return console.log("create error: " + err); }
+		res.json(post);
 	});
 });
 
-//ROUTE TO UPDATE SINGLE BLOG POST
-app.put("/API/POSTS/:id", function (req, res) {
 
+//ROUTE TO UPDATE SINGLE BLOG POST
+app.put("/api/posts/:id", function (req, res) {
+	var targetId = req.param.id;
+	db.Post.put(targetId, function (err, put ) {
+
+	});
 });
 
 //ROUTE TO DELETE A POST
-app.delete("API/POSTS/:id", function (req, res) {
-
+app.delete("/api/posts/:id", function (req, res) {
+	var targetId = req.param.id;
+//	db.Post.delete
 });
 
 
